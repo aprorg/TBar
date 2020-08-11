@@ -70,17 +70,7 @@ public class TBarFixer extends AbstractFixer {
 		if (!dp.validPaths) return;
 		
 		// Read suspicious positions.
-		List<SuspiciousPosition> suspiciousCodeList = null;
-		if (granularity == Granularity.Line) {
-			// It assumes that the line-level bug positions are known.
-			suspiciousCodeList = readKnownBugPositionsFromFile();
-		} else if (granularity == Granularity.File) {
-			// It assumes that the file-level bug positions are known.
-			List<String> buggyFileList = readKnownFileLevelBugPositions();
-			suspiciousCodeList = readSuspiciousCodeFromFile(buggyFileList);
-		} else {
-			suspiciousCodeList = readSuspiciousCodeFromFile();
-		}
+		List<SuspiciousPosition> suspiciousCodeList = readSuspiciousCodeFromFile();
 		
 		if (suspiciousCodeList == null) return;
 		
@@ -94,7 +84,7 @@ public class TBarFixer extends AbstractFixer {
 //				log.debug(scn.suspCodeStr);
 				if (triedSuspNode.contains(scn)) continue;
 				triedSuspNode.add(scn);
-				
+
 				// Parse context information of the suspicious code.
 				List<Integer> contextInfoList = readAllNodeTypes(scn.suspCodeAstNode);
 				List<Integer> distinctContextInfo = new ArrayList<>();
@@ -104,10 +94,10 @@ public class TBarFixer extends AbstractFixer {
 					}
 				}
 //				List<Integer> distinctContextInfo = contextInfoList.stream().distinct().collect(Collectors.toList());
-				
+
 		        // Match fix templates for this suspicious code with its context information.
 				fixWithMatchedFixTemplates(scn, distinctContextInfo);
-		        
+
 				if (!isTestFixPatterns && minErrorTest == 0) break;
 			}
 			if (!isTestFixPatterns && minErrorTest == 0) break;
@@ -224,33 +214,21 @@ public class TBarFixer extends AbstractFixer {
 
 
 	public List<SuspiciousPosition> readSuspiciousCodeFromFile() {
-		File suspiciousFile = null;
-		String suspiciousFilePath = "";
-		if (this.suspCodePosFile == null) {
-			suspiciousFilePath = Configuration.suspPositionsFilePath;
-		} else {
-			suspiciousFilePath = this.suspCodePosFile.getPath();
+		if (!suspCodePosFile.exists()) {
+			System.out.println("Cannot find the suspicious code position file." + suspCodePosFile.getPath());
+			return null;
 		}
-		suspiciousFile = new File(suspiciousFilePath + "/" + this.buggyProject + "/" + this.metric + ".txt");
-		if (!suspiciousFile.exists()) {
-			System.out.println("Cannot find the suspicious code position file." + suspiciousFile.getPath());
-			suspiciousFile = new File(suspiciousFilePath + "/" + this.buggyProject + "/" + this.metric.toLowerCase() + ".txt");
-		}
-		if (!suspiciousFile.exists()) {
-			System.out.println("Cannot find the suspicious code position file." + suspiciousFile.getPath());
-			suspiciousFile = new File(suspiciousFilePath + "/" + this.buggyProject + "/All.txt");
-		}
-		if (!suspiciousFile.exists()) return null;
+
 		List<SuspiciousPosition> suspiciousCodeList = new ArrayList<>();
 		try {
-			FileReader fileReader = new FileReader(suspiciousFile);
+			FileReader fileReader = new FileReader(suspCodePosFile);
             BufferedReader reader = new BufferedReader(fileReader);
             String line = null;
             while ((line = reader.readLine()) != null) {
             	String[] elements = line.split("@");
             	SuspiciousPosition sp = new SuspiciousPosition();
             	sp.classPath = elements[0];
-            	sp.lineNumber = Integer.valueOf(elements[1]);
+            	sp.lineNumber = Integer.parseInt(elements[1]);
             	suspiciousCodeList.add(sp);
             }
             reader.close();

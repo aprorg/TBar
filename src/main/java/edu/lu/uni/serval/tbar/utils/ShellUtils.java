@@ -52,7 +52,7 @@ public class ShellUtils {
             }
         }
         batFile.deleteOnExit();
-        
+        System.err.println("==> Run command: " + String.join(" ", asList));
         Process process= Runtime.getRuntime().exec(cmd);
         String results = ShellUtils.getShellOut(process);
         batFile.delete();

@@ -36,7 +36,7 @@ public class Main {
 		Configuration.outputPath += "NormalFL/";
 
 		String projectFolder = "/Users/cuong/IdeaProjects/apr-repo/commons-lang";
-		String suspiciousFiles = "/Users/cuong/IdeaProjects/TBar/SuspiciousCodePositions/Lang_1/Ochiai.txt";
+		String suspiciousFile = "/Users/cuong/IdeaProjects/TBar/SusFiles/apache-commons-lang-224267191.txt";
 		String failedTestsStr = "org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersAndIgnoreAccess,org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess";
 
 		Configuration.srcPath = "/src/main/java/";
@@ -46,11 +46,7 @@ public class Main {
 
 		List<String> failedTests = new ArrayList<>();
 		for (String failedTest : failedTestsStr.split(",")) {
-			int idx = failedTest.indexOf("#");
-			if (idx > 0) {
-				failedTests.add(failedTest.substring(0, idx));
-			}
-			else {
+			if (!failedTests.contains(failedTest)) {
 				failedTests.add(failedTest);
 			}
 		}
@@ -58,9 +54,9 @@ public class Main {
 		AbstractFixer fixer = new TBarFixer(projectFolder, failedTests);
 		fixer.dataType = "TBar";
 		fixer.metric = Configuration.faultLocalizationMetric;
-		fixer.suspCodePosFile = new File(suspiciousFiles);
+		fixer.suspCodePosFile = new File(suspiciousFile);
 
-//		fixer.fixProcess();
+		fixer.fixProcess();
 
 		int fixedStatus = fixer.fixedStatus;
 		switch (fixedStatus) {

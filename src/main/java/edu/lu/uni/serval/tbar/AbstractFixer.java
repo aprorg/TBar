@@ -69,8 +69,25 @@ public abstract class AbstractFixer implements IFixer {
 	public AbstractFixer(String projectPath, List<String> failedTests) {
 		// set path to project
 		fullBuggyProjectPath = projectPath;
-		// set failed test names
-		failedTestStrList.addAll(failedTests);
+
+		// set failed test method names
+		// org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess
+		fakeFailedTestCasesList.addAll(failedTests);
+
+		// set failed test class names
+		// org.apache.commons.lang3.reflect.MethodUtilsTest
+		for (String failedTest : failedTests) {
+			int idx = failedTest.indexOf("#");
+			String x = idx > 0 ? failedTest.substring(0, idx) : failedTest;
+			if (!failedTestCasesStrList.contains(x)) {
+				failedTestCasesStrList.add(x);
+			}
+		}
+
+		for (String ft : failedTestCasesStrList) {
+			failedTestCaseClasses += ft + " ";
+		}
+
 		// set number of failed tests
 		minErrorTest = failedTests.size();
 
@@ -271,55 +288,39 @@ public abstract class AbstractFixer implements IFixer {
 
 			log.debug("Compiling");
 			try {// Compile patched file.
-				ShellUtils.shellRun(Arrays.asList("javac -Xlint:unchecked -source 1.7 -target 1.7 -cp "
+				ShellUtils.shellRun(Arrays.asList("javac -Xlint:unchecked -source 1.8 -target 1.8 -cp "
 						+ PathUtils.buildCompileClassPath(Arrays.asList(PathUtils.getJunitPath()), dp.classPath, dp.testClassPath)
 						+ " -d " + dp.classPath + " " + scn.targetJavaFile.getAbsolutePath()), buggyProject);
 			} catch (IOException e) {
 				log.debug(buggyProject + " ---Fixer: fix fail because of javac exception! ");
 				continue;
 			}
-			if (!scn.targetClassFile.exists()) { // fail to compile
-				int results = (this.buggyProject.startsWith("Mockito") || this.buggyProject.startsWith("Closure") || this.buggyProject.startsWith("Time")) ? TestUtils.compileProjectWithDefects4j(fullBuggyProjectPath, defects4jPath) : 1;
-				if (results == 1) {
-					log.debug(buggyProject + " ---Fixer: fix fail because of failed compiling! ");
-					continue;
-				}
-			}
+//			if (!scn.targetClassFile.exists()) { // fail to compile
+//				int results = (this.buggyProject.startsWith("Mockito") || this.buggyProject.startsWith("Closure") || this.buggyProject.startsWith("Time")) ? TestUtils.compileProjectWithDefects4j(fullBuggyProjectPath, defects4jPath) : 1;
+//				if (results == 1) {
+//					log.debug(buggyProject + " ---Fixer: fix fail because of failed compiling! ");
+//					continue;
+//				}
+//			}
 			log.debug("Finish of compiling.");
 			
 			log.debug("Test previously failed test cases.");
+			List<String> failedTestsAfterFix = new ArrayList<>();
+			int errorTestAfterFix = Integer.MAX_VALUE;
 			try {
 				String results = ShellUtils.shellRun(Arrays.asList("java -cp "
 						+ PathUtils.buildTestClassPath(dp.classPath, dp.testClassPath)
 						+ " org.junit.runner.JUnitCore " + this.failedTestCaseClasses), buggyProject);
 
-				if (results.isEmpty()) {
-//					System.err.println(scn.suspiciousJavaFile + "@" + scn.buggyLine);
-//					System.err.println("Bug: " + buggyCode);
-//					System.err.println("Patch: " + patchCode);
-					continue;
-				} else {
-					if (!results.contains("java.lang.NoClassDefFoundError")) {
-						List<String> tempFailedTestCases = readTestResults(results);
-						tempFailedTestCases.retainAll(this.fakeFailedTestCasesList);
-						if (!tempFailedTestCases.isEmpty()) {
-							if (this.failedTestCasesStrList.size() == 1) continue;
+				List<String> tempFailedTestCases = readTestResults(results);
+				failedTestsAfterFix.addAll(tempFailedTestCases);
+				errorTestAfterFix = failedTestsAfterFix.size();
+				failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
 
-							// Might be partially fixed.
-							tempFailedTestCases.removeAll(this.failedTestCasesStrList);
-							if (!tempFailedTestCases.isEmpty()) continue; // Generate new bugs.
-						}
-					}
-				}
 			} catch (IOException e) {
 				log.debug(buggyProject + " ---Fixer: fix fail because of faile passing previously failed test cases! ");
 				continue;
 			}
-
-			List<String> failedTestsAfterFix = new ArrayList<>();
-			int errorTestAfterFix = TestUtils.getFailTestNumInProject(fullBuggyProjectPath, this.defects4jPath,
-					failedTestsAfterFix);
-			failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
 			
 			if (errorTestAfterFix < minErrorTest) {
 				List<String> tmpFailedTestsAfterFix = new ArrayList<>();
@@ -349,7 +350,8 @@ public abstract class AbstractFixer implements IFixer {
 						this.minErrorTest = 0;
 						break;
 					}
-				} else {
+				}
+				else {
 					if (minErrorTestAfterFix == 0 || errorTestAfterFix <= minErrorTestAfterFix) {
 						minErrorTestAfterFix = errorTestAfterFix;
 						if (fixedStatus != 1) fixedStatus = 2;
@@ -365,7 +367,8 @@ public abstract class AbstractFixer implements IFixer {
 						}
 					}
 				}
-			} else {
+			}
+			else {
 				log.debug("Failed Tests after fixing: " + errorTestAfterFix + " " + buggyProject);
 			}
 		}
@@ -397,7 +400,7 @@ public abstract class AbstractFixer implements IFixer {
 				}
 				String testCase = testResult.substring(0, indexOfLeftParenthesis);
 				String testClass = testResult.substring(indexOfLeftParenthesis + 1);
-				failedTeatCases.add(testClass + "::" + testCase);
+				failedTeatCases.add(testClass + "#" + testCase);
 			}
 		}
 		return failedTeatCases;
