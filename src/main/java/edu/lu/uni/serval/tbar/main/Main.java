@@ -26,6 +26,16 @@ public class Main {
 		"/target/test-classes/",
 	};
 
+	private static String[] Bears_98 = {
+		"/Users/cuong/IdeaProjects/apr-repo/traccar",
+		"/Users/cuong/IdeaProjects/TBar/SusFiles/Bears-98",
+		"org.traccar.protocol.GoSafeProtocolDecoderTest#testDecode",
+		"/src/",
+		"/test/",
+		"/target/classes/",
+		"/target/test-classes/",
+	};
+
 	public static void main(String[] args) {
 		args = apache_commons_lang_224267191;
 
