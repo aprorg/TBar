@@ -65,6 +65,24 @@ public abstract class AbstractFixer implements IFixer {
 	protected Dictionary dic = null;
 	
 	public boolean isTestFixPatterns = false;
+
+	public AbstractFixer(String projectPath, List<String> failedTests) {
+		// set path to project
+		fullBuggyProjectPath = projectPath;
+		// set failed test names
+		failedTestStrList.addAll(failedTests);
+		// set number of failed tests
+		minErrorTest = failedTests.size();
+
+		// set up DataPreparer
+		File projectFile = new File(projectPath);
+		String projectParentPath = projectFile.getParent();
+		String projectName = projectFile.getName();
+		this.dp = new DataPreparer(projectParentPath);
+		dp.prepareData(projectName);
+
+		log.info(projectName + " Failed Tests: " + this.minErrorTest);
+	}
 	
 	public AbstractFixer(String path, String projectName, int bugId, String defects4jPath) {
 		this.path = path;
@@ -90,7 +108,7 @@ public abstract class AbstractFixer implements IFixer {
 		dp.prepareData(buggyProject);
 		
 		readPreviouslyFailedTestCases();
-		
+
 //		createDictionary();
 	}
 

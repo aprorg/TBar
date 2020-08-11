@@ -11,4 +11,8 @@ public class Configuration {
 	public static final String TEMP_FILES_PATH = ".temp/";
 	public static final long SHELL_RUN_TIMEOUT = 10800L;
 
+	public static String classPath = "";
+	public static String testClassPath = "";
+	public static String srcPath = "";
+	public static String testSrcPath = "";
 }

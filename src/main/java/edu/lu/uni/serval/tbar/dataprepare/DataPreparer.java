@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.lu.uni.serval.tbar.config.Configuration;
 import edu.lu.uni.serval.tbar.utils.FileHelper;
 import edu.lu.uni.serval.tbar.utils.JavaLibrary;
 import edu.lu.uni.serval.tbar.utils.PathUtils;
@@ -55,11 +56,10 @@ public class DataPreparer {
 
 	private void loadPaths(String buggyProject) {
 		String projectDir = buggyProjectParentPath;
-		List<String> paths = PathUtils.getSrcPath(buggyProject);
-		classPath = projectDir + buggyProject + paths.get(0);
-		testClassPath = projectDir + buggyProject + paths.get(1);
-		srcPath = projectDir + buggyProject + paths.get(2);
-		testSrcPath = projectDir + buggyProject + paths.get(3);
+		classPath = projectDir + buggyProject + Configuration.classPath;
+		testClassPath = projectDir + buggyProject + Configuration.testClassPath;
+		srcPath = projectDir + buggyProject + Configuration.srcPath;
+		testSrcPath = projectDir + buggyProject + Configuration.testSrcPath;
 
 		List<File> libPackages = new ArrayList<>();
 		if (new File(projectDir + buggyProject + "/lib/").exists()) {
