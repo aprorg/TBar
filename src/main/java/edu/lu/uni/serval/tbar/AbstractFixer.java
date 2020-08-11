@@ -271,7 +271,9 @@ public abstract class AbstractFixer implements IFixer {
 	}
 
 	protected List<Patch> triedPatchCandidates = new ArrayList<>();
-	
+
+	private boolean printJunitRunningLog = false;
+
 	protected void testGeneratedPatches(List<Patch> patchCandidates, SuspCodeNode scn) {
 		// Testing generated patches.
 		for (Patch patch : patchCandidates) {
@@ -292,16 +294,10 @@ public abstract class AbstractFixer implements IFixer {
 						+ PathUtils.buildCompileClassPath(Arrays.asList(PathUtils.getJunitPath()), dp.classPath, dp.testClassPath)
 						+ " -d " + dp.classPath + " " + scn.targetJavaFile.getAbsolutePath()), buggyProject);
 			} catch (IOException e) {
+				e.printStackTrace();
 				log.debug(buggyProject + " ---Fixer: fix fail because of javac exception! ");
 				continue;
 			}
-//			if (!scn.targetClassFile.exists()) { // fail to compile
-//				int results = (this.buggyProject.startsWith("Mockito") || this.buggyProject.startsWith("Closure") || this.buggyProject.startsWith("Time")) ? TestUtils.compileProjectWithDefects4j(fullBuggyProjectPath, defects4jPath) : 1;
-//				if (results == 1) {
-//					log.debug(buggyProject + " ---Fixer: fix fail because of failed compiling! ");
-//					continue;
-//				}
-//			}
 			log.debug("Finish of compiling.");
 			
 			log.debug("Test previously failed test cases.");
@@ -311,13 +307,17 @@ public abstract class AbstractFixer implements IFixer {
 				String results = ShellUtils.shellRun(Arrays.asList("java -cp "
 						+ PathUtils.buildTestClassPath(dp.classPath, dp.testClassPath)
 						+ " org.junit.runner.JUnitCore " + this.failedTestCaseClasses), buggyProject);
-
+				if (!printJunitRunningLog) {
+					System.err.println(results);
+					printJunitRunningLog = true;
+				}
 				List<String> tempFailedTestCases = readTestResults(results);
 				failedTestsAfterFix.addAll(tempFailedTestCases);
 				errorTestAfterFix = failedTestsAfterFix.size();
 				failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
 
 			} catch (IOException e) {
+				e.printStackTrace();
 				log.debug(buggyProject + " ---Fixer: fix fail because of faile passing previously failed test cases! ");
 				continue;
 			}

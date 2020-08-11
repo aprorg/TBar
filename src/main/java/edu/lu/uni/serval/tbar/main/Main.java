@@ -16,34 +16,29 @@ import edu.lu.uni.serval.tbar.config.Configuration;
  *
  */
 public class Main {
-	
-//	public static void main(String[] args) {
-//		if (args.length != 3) {
-//			System.err.println("Arguments: \n"
-//					+ "\t<Bug_Data_Path>: the directory of checking out Defects4J bugs. \n"
-//					+ "\t<Bug_ID>: bug id of each Defects4J bug, such as Chart_1. \n"
-//					+ "\t<defects4j_Home>: the directory of defects4j git repository.\n");
-//			System.exit(0);
-//		}
-//		String bugDataPath = args[0];// "../Defects4JData/"
-//		String bugId = args[1]; // "Chart_1"
-//		String defects4jHome = args[2]; // "../defects4j/"
-//		System.out.println(bugId);
-//		fixBug(bugDataPath, defects4jHome, bugId);
-//	}
+	private static String[] apache_commons_lang_224267191 = {
+		"/Users/cuong/IdeaProjects/apr-repo/commons-lang",
+		"/Users/cuong/IdeaProjects/TBar/SusFiles/apache-commons-lang-224267191.txt",
+		"org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersAndIgnoreAccess,org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess",
+		"/src/main/java/",
+		"/src/test/java/",
+		"/target/classes/",
+		"/target/test-classes/",
+	};
 
 	public static void main(String[] args) {
+		args = apache_commons_lang_224267191;
+
+		String projectFolder = args[0];
+		String suspiciousFile = args[1];
+		String failedTestsStr = args[2];
+
+		Configuration.srcPath = args[3];
+		Configuration.testSrcPath = args[4];
+		Configuration.classPath = args[5];
+		Configuration.testClassPath = args[6];
+
 		Configuration.outputPath += "NormalFL/";
-
-		String projectFolder = "/Users/cuong/IdeaProjects/apr-repo/commons-lang";
-		String suspiciousFile = "/Users/cuong/IdeaProjects/TBar/SusFiles/apache-commons-lang-224267191.txt";
-		String failedTestsStr = "org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersAndIgnoreAccess,org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess";
-
-		Configuration.srcPath = "/src/main/java/";
-		Configuration.testSrcPath = "/src/test/java/";
-		Configuration.classPath = "/target/classes/";
-		Configuration.testClassPath = "/target/test-classes/";
-
 		List<String> failedTests = new ArrayList<>();
 		for (String failedTest : failedTestsStr.split(",")) {
 			if (!failedTests.contains(failedTest)) {
