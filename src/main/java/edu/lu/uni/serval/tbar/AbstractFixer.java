@@ -290,22 +290,27 @@ public abstract class AbstractFixer implements IFixer {
 
 			log.debug("Compiling");
 			try {// Compile patched file.
-				ShellUtils.shellRun(Arrays.asList("javac -Xlint:unchecked -source 1.8 -target 1.8 -cp "
-						+ PathUtils.buildCompileClassPath(Arrays.asList(PathUtils.getJunitPath()), dp.classPath, dp.testClassPath)
+				String result = ShellUtils.shellRun(Arrays.asList("javac -Xlint:unchecked -source 1.8 -target 1.8 -cp "
+						+ PathUtils.buildCompileClassPath(Arrays.asList(PathUtils.getJunitPath()), dp.classPath, dp.testClassPath, dp.libPaths)
 						+ " -d " + dp.classPath + " " + scn.targetJavaFile.getAbsolutePath()), buggyProject);
+				System.out.println(result);
 			} catch (IOException e) {
 				e.printStackTrace();
 				log.debug(buggyProject + " ---Fixer: fix fail because of javac exception! ");
 				continue;
 			}
+			if (!scn.targetClassFile.exists()) { // fail to compile
+				log.debug(buggyProject + " ---Fixer: fix fail because of failed compiling! ");
+				continue;
+			}
 			log.debug("Finish of compiling.");
-			
+
 			log.debug("Test previously failed test cases.");
 			List<String> failedTestsAfterFix = new ArrayList<>();
 			int errorTestAfterFix = Integer.MAX_VALUE;
 			try {
 				String results = ShellUtils.shellRun(Arrays.asList("java -cp "
-						+ PathUtils.buildTestClassPath(dp.classPath, dp.testClassPath)
+						+ PathUtils.buildTestClassPath(dp.classPath, dp.testClassPath, dp.libPaths)
 						+ " org.junit.runner.JUnitCore " + this.failedTestCaseClasses), buggyProject);
 				if (!printJunitRunningLog) {
 					System.err.println(results);

@@ -93,33 +93,43 @@ public class PathUtils {
 		return System.getProperty("user.dir")+"/target/dependency/hamcrest-all-1.3.jar";
 	}
 
-	public static String buildCompileClassPath(List<String> additionalPath, String classPath, String testClassPath){
-		String path = "\"";
-		path += classPath;
-		path += System.getProperty("path.separator");
-		path += testClassPath;
-		path += System.getProperty("path.separator");
-		path += JunitRunner.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-		path += System.getProperty("path.separator");
-		path += StringUtils.join(additionalPath,System.getProperty("path.separator"));
-		path += "\"";
-		return path;
+	public static String buildCompileClassPath(List<String> additionalPath, String classPath, String testClassPath, List<String> libPaths){
+		StringBuilder path = new StringBuilder("\"");
+		path.append(classPath);
+		path.append(System.getProperty("path.separator"));
+		path.append(testClassPath);
+		path.append(System.getProperty("path.separator"));
+		path.append(JunitRunner.class.getProtectionDomain().getCodeSource().getLocation().getFile());
+		path.append(System.getProperty("path.separator"));
+		path.append(StringUtils.join(additionalPath, System.getProperty("path.separator")));
+		for (String libPath : libPaths) {
+			path.append(libPath);
+			path.append(System.getProperty("path.separator"));
+		}
+		path.append("\"");
+		return path.toString();
 	}
 	
-	public static String buildTestClassPath(String classPath, String testClassPath) {
-		String path = "\"";
-		path += classPath;
-		path += System.getProperty("path.separator");
-		path += testClassPath;
-		path += System.getProperty("path.separator");
-		path += JunitRunner.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-		path += System.getProperty("path.separator");
-	    path += getJunitPath();
-	    path += System.getProperty("path.separator");
-	    path += getHamcrestPath();
-	    path += System.getProperty("path.separator");
-		path += "\"";
-		return path;
+	public static String buildTestClassPath(String classPath, String testClassPath, List<String> libPaths) {
+		StringBuilder path = new StringBuilder("\"");
+		path.append(classPath);
+		path.append(System.getProperty("path.separator"));
+		path.append(testClassPath);
+		path.append(System.getProperty("path.separator"));
+
+		for (String libPath : libPaths) {
+			path.append(libPath);
+			path.append(System.getProperty("path.separator"));
+		}
+
+		path.append(JunitRunner.class.getProtectionDomain().getCodeSource().getLocation().getFile());
+		path.append(System.getProperty("path.separator"));
+	    path.append(getJunitPath());
+	    path.append(System.getProperty("path.separator"));
+	    path.append(getHamcrestPath());
+	    path.append(System.getProperty("path.separator"));
+		path.append("\"");
+		return path.toString();
     }
 
 }

@@ -18,7 +18,7 @@ import edu.lu.uni.serval.tbar.config.Configuration;
 public class Main {
 	private static String[] apache_commons_lang_224267191 = {
 		"/Users/cuong/IdeaProjects/apr-repo/commons-lang",
-		"/Users/cuong/IdeaProjects/TBar/SusFiles/apache-commons-lang-224267191.txt",
+		"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/apache_commons_lang_224267191.txt",
 		"org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersAndIgnoreAccess,org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess",
 		"/src/main/java/",
 		"/src/test/java/",
@@ -28,7 +28,7 @@ public class Main {
 
 	private static String[] Bears_98 = {
 		"/Users/cuong/IdeaProjects/apr-repo/traccar",
-		"/Users/cuong/IdeaProjects/TBar/SusFiles/Bears-98",
+		"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-98.txt",
 		"org.traccar.protocol.GoSafeProtocolDecoderTest#testDecode",
 		"/src/",
 		"/test/",
@@ -37,7 +37,7 @@ public class Main {
 	};
 
 	public static void main(String[] args) {
-		args = apache_commons_lang_224267191;
+		args = Bears_98;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];
