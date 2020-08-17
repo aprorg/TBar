@@ -46,8 +46,28 @@ public class Main {
 			"/target/test-classes/",
 	};
 
+	private static String[] Bears_139 = {
+			"/Users/cuong/IdeaProjects/apr-repo/traccar",
+			"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-139.txt",
+			"org.traccar.protocol.MeitrackProtocolDecoderTest#testDecode",
+			"/src/",
+			"/test/",
+			"/target/classes/",
+			"/target/test-classes/",
+	};
+
+	private static String[] Bears_102 = {
+			"/Users/cuong/IdeaProjects/apr-repo/traccar",
+			"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-102.txt",
+			"org.traccar.protocol.TeltonikaProtocolDecoderTest#testDecode",
+			"/src/",
+			"/test/",
+			"/target/classes/",
+			"/target/test-classes/",
+	};
+
 	public static void main(String[] args) {
-		args = Bears_127;
+		args = Bears_102;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];
@@ -66,7 +86,8 @@ public class Main {
 			}
 		}
 
-		AbstractFixer fixer = new TBarFixer(projectFolder, failedTests);
+		String bugId = new File(suspiciousFile).getName().replace(".txt", "");
+		AbstractFixer fixer = new TBarFixer(projectFolder, failedTests, bugId);
 		fixer.dataType = "TBar";
 		fixer.metric = Configuration.faultLocalizationMetric;
 		fixer.suspCodePosFile = new File(suspiciousFile);

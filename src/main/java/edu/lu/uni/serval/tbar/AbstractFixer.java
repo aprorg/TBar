@@ -66,9 +66,10 @@ public abstract class AbstractFixer implements IFixer {
 	
 	public boolean isTestFixPatterns = false;
 
-	public AbstractFixer(String projectPath, List<String> failedTests) {
+	public AbstractFixer(String projectPath, List<String> failedTests, String bugId) {
 		// set path to project
 		fullBuggyProjectPath = projectPath;
+		buggyProject = bugId;
 
 		// set failed test method names
 		// org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess

@@ -60,8 +60,8 @@ public class TBarFixer extends AbstractFixer {
 		super(path, metric, projectName, bugId, defects4jPath);
 	}
 
-	public TBarFixer(String projectPath, List<String> failedTests) {
-		super(projectPath, failedTests);
+	public TBarFixer(String projectPath, List<String> failedTests, String bugId) {
+		super(projectPath, failedTests, bugId);
 	}
 
 	@Override
