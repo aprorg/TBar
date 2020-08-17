@@ -307,11 +307,28 @@ public abstract class AbstractFixer implements IFixer {
 
 			log.debug("Test previously failed test cases.");
 			List<String> failedTestsAfterFix = new ArrayList<>();
-			int errorTestAfterFix = Integer.MAX_VALUE;
+			int errorTestAfterFix;
 			try {
 				String results = ShellUtils.shellRun(Arrays.asList("java -cp "
 						+ PathUtils.buildTestClassPath(dp.classPath, dp.testClassPath, dp.libPaths)
 						+ " org.junit.runner.JUnitCore " + this.failedTestCaseClasses), buggyProject);
+				List<String> tempFailedTestCases = readTestResults(results);
+				failedTestsAfterFix.addAll(tempFailedTestCases);
+				failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
+				if (failedTestsAfterFix.size() > 0) continue;
+
+			} catch (IOException e) {
+				e.printStackTrace();
+				log.debug(buggyProject + " ---Fixer: fix fail because of faile passing previously failed test cases! ");
+				continue;
+			}
+
+			log.debug("Test the whole test suite.");
+			try {
+				String results = ShellUtils.shellRun(Arrays.asList("java -cp "
+						+ PathUtils.buildTestClassPath(dp.classPath, dp.testClassPath, dp.libPaths)
+						+ " org.junit.runner.JUnitCore " + dp.getAllTestCaseClasses()), buggyProject);
+
 				if (!printJunitRunningLog) {
 					System.err.println(results);
 					printJunitRunningLog = true;
@@ -320,13 +337,14 @@ public abstract class AbstractFixer implements IFixer {
 				failedTestsAfterFix.addAll(tempFailedTestCases);
 				errorTestAfterFix = failedTestsAfterFix.size();
 				failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
+				if (failedTestsAfterFix.size() > 0) continue;
 
 			} catch (IOException e) {
 				e.printStackTrace();
 				log.debug(buggyProject + " ---Fixer: fix fail because of faile passing previously failed test cases! ");
 				continue;
 			}
-			
+
 			if (errorTestAfterFix < minErrorTest) {
 				List<String> tmpFailedTestsAfterFix = new ArrayList<>();
 				tmpFailedTestsAfterFix.addAll(failedTestsAfterFix);

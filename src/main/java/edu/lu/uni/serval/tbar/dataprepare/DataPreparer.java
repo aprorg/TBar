@@ -97,6 +97,15 @@ public class DataPreparer {
 		return true;
 	}
 
+	public String getAllTestCaseClasses() {
+    	StringBuilder result = new StringBuilder();
+    	for (String tc : testCases) {
+    		result.append(tc);
+    		result.append(" ");
+		}
+    	return result.toString();
+	}
+
 	private void loadTestCases() {
 		testCases = new TestClassesFinder().findIn(JavaLibrary.classPathFrom(testClassPath + ":" + classPath), false);
 //		List<File> testCasesFiles = FileHelper.getAllFiles(testClassPath, ".class");

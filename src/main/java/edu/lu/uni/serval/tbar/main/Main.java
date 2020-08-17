@@ -36,8 +36,18 @@ public class Main {
 		"/target/test-classes/",
 	};
 
+	private static String[] Bears_127 = {
+			"/Users/cuong/IdeaProjects/apr-repo/traccar",
+			"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-127.txt",
+			"org.traccar.protocol.EelinkProtocolDecoderTest#testDecode",
+			"/src/",
+			"/test/",
+			"/target/classes/",
+			"/target/test-classes/",
+	};
+
 	public static void main(String[] args) {
-		args = Bears_98;
+		args = Bears_127;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];
