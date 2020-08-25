@@ -313,9 +313,10 @@ public abstract class AbstractFixer implements IFixer {
 				String results = ShellUtils.shellRun(Arrays.asList("java -cp "
 						+ PathUtils.buildTestClassPath(dp.classPath, dp.testClassPath, dp.libPaths)
 						+ " org.junit.runner.JUnitCore " + this.failedTestCaseClasses), buggyProject);
+				System.out.println(results);
 				List<String> tempFailedTestCases = readTestResults(results);
 				failedTestsAfterFix.addAll(tempFailedTestCases);
-				failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
+				failedTestsAfterFix.retainAll(this.fakeFailedTestCasesList);
 				if (failedTestsAfterFix.size() > 0) continue;
 
 			} catch (IOException e) {

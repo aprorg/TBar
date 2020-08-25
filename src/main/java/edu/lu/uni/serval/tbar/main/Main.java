@@ -16,58 +16,29 @@ import edu.lu.uni.serval.tbar.config.Configuration;
  *
  */
 public class Main {
-	private static String[] apache_commons_lang_224267191 = {
-		"/Users/cuong/IdeaProjects/apr-repo/commons-lang",
-		"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/apache_commons_lang_224267191.txt",
-		"org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersAndIgnoreAccess,org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess",
-		"/src/main/java/",
-		"/src/test/java/",
-		"/target/classes/",
-		"/target/test-classes/",
-	};
-
-	private static String[] Bears_98 = {
-		"/Users/cuong/IdeaProjects/apr-repo/traccar",
-		"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-98.txt",
-		"org.traccar.protocol.GoSafeProtocolDecoderTest#testDecode",
-		"/src/",
-		"/test/",
-		"/target/classes/",
-		"/target/test-classes/",
-	};
-
-	private static String[] Bears_127 = {
-			"/Users/cuong/IdeaProjects/apr-repo/traccar",
-			"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-127.txt",
-			"org.traccar.protocol.EelinkProtocolDecoderTest#testDecode",
-			"/src/",
-			"/test/",
-			"/target/classes/",
-			"/target/test-classes/",
-	};
-
-	private static String[] Bears_139 = {
-			"/Users/cuong/IdeaProjects/apr-repo/traccar",
-			"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-139.txt",
-			"org.traccar.protocol.MeitrackProtocolDecoderTest#testDecode",
-			"/src/",
-			"/test/",
-			"/target/classes/",
-			"/target/test-classes/",
-	};
-
-	private static String[] Bears_102 = {
-			"/Users/cuong/IdeaProjects/apr-repo/traccar",
-			"/Users/cuong/IdeaProjects/TBar/SusFiles/PerfectFL/Bears-102.txt",
-			"org.traccar.protocol.TeltonikaProtocolDecoderTest#testDecode",
-			"/src/",
-			"/test/",
-			"/target/classes/",
-			"/target/test-classes/",
-	};
 
 	public static void main(String[] args) {
-		args = Bears_102;
+		// traccar
+		args = Bugs.tananaev_traccar_82839755;
+		args = Bugs.Bears_127;
+		args = Bugs.Bears_102;
+		args = Bugs.tananaev_traccar_64783123;
+		args = Bugs.Bears_98;
+		args = Bugs.tananaev_traccar_68883949;
+		args = Bugs.Bears_121;
+		args = Bugs.Bears_139;
+		args = Bugs.tananaev_traccar_221926468;
+		args = Bugs.Bears_116;
+		args = Bugs.Bears_110;
+
+		args = Bugs.apache_commons_lang_224267191;
+
+		// spoon
+		args = Bugs.Bears_217;
+		args = Bugs.Bears_78;
+		args = Bugs.Bears_42;
+		args = Bugs.Bears_56;
+		args = Bugs.Bears_74;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];

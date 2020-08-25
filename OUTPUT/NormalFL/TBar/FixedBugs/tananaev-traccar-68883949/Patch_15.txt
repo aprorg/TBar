@@ -1,0 +1,18 @@
+diff --git a/src/org/traccar/Context.java b/src/org/traccar/Context.java
+index d8024d0669a..f6cdf00613b 100644
+--- a/src/org/traccar/Context.java
++++ b/src/org/traccar/Context.java
+@@ -117,12 +117,6 @@ public class Context {
+         serverManager.init();
+     }
+ 
+-    /**
+-     * Initialize context for unit testing
+-     */
+-    public static void init(DataManager dataManager) {
+-        properties = new Properties();
+-        Context.dataManager = dataManager;
+-    }
++    
+ 
+ }
