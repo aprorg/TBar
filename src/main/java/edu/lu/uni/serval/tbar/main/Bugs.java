@@ -191,4 +191,15 @@ public class Bugs {
             "/build/classes/test",
             "org.stagemonitor.core.elasticsearch.IndexSelectorIntegrationTest#testDeleteOldIndicesUnavailable",
     };
+
+    public static String[] puniverse_capsule_78565048 = {
+            "/home/cuong/IdeaProjects/apr-repo/regression-bugs/capsule",
+            "/home/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/puniverse-capsule-78565048.txt",
+            "CapsuleTest#testAgents,CapsuleTest#testApplicationArtifact,CapsuleTest#testBootClassPath1,CapsuleTest#testBootClassPath2,CapsuleTest#testBootClassPathWithDeps,CapsuleTest#testBootClassPathWithEmbeddedDeps,CapsuleTest#testCapsuleInClassPath,CapsuleTest#testCapsuleJavaCmd,CapsuleTest#testCapsuleJavaHome,CapsuleTest#testClassPath,CapsuleTest#testDependencies1,CapsuleTest#testEmbeddedArtifact,CapsuleTest#testEmbeddedCaplet,CapsuleTest#testExpandVars1,CapsuleTest#testJVMArgs,CapsuleTest#testLogLevel,CapsuleTest#testMode,CapsuleTest#testNatives1,CapsuleTest#testNatives2,CapsuleTest#testNativesWithDeps,CapsuleTest#testNoExtract,CapsuleTest#testPlatformSepcific,CapsuleTest#testPrintCapsuleVersion,CapsuleTest#testPrintModes,CapsuleTest#testReallyExecutableCapsule,CapsuleTest#testScript,CapsuleTest#testSimpleCaplet1,CapsuleTest#testSimpleCaplet2,CapsuleTest#testSimpleExtract,CapsuleTest#testSystemProperties,CapsuleTest#testWrapperCapsule,CapsuleTest#testWrapperCapsuleNonCapsuleApp",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/build/classes/java/main",
+            "/build/classes/java/test",
+            "CapsuleTest#testJDKClassPath,CapsuleTest#testMerge,CapsuleTest#testPrintHelp,CapsuleTest#testTrampoline",
+    };
 }
