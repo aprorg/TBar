@@ -109,7 +109,7 @@ public abstract class AbstractFixer implements IFixer {
 			String result = ShellUtils.shellRun(Arrays.asList("javac -Xlint:unchecked -source 1.8 -target 1.8 -cp "
 					+ PathUtils.buildCompileClassPath(Arrays.asList(PathUtils.getJunitPath()), dp.classPath, dp.testClassPath, dp.libPaths)
 					+ " -d " + dp.classPath + " " + sourceFilePath), buggyProject);
-			if (!result.trim().isEmpty()) {
+			if (!result.trim().isEmpty() && !result.contains("==TBAR_OK==")) {
 				System.out.println(result);
 				System.err.println("Please make sure project is compilable first!");
 				System.exit(1);

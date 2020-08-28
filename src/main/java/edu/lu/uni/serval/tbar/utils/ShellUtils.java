@@ -55,6 +55,9 @@ public class ShellUtils {
         System.err.println("==> Run command: " + String.join(" ", asList));
         Process process= Runtime.getRuntime().exec(cmd);
         String results = ShellUtils.getShellOut(process);
+        if (process.exitValue() == 0) {
+            results += "\n==TBAR_OK==";
+        }
         batFile.delete();
         return results;
 	}
