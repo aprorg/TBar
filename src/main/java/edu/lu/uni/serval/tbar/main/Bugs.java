@@ -212,4 +212,24 @@ public class Bugs {
             "/target/classes/",
             "/target/test-classes/",
     };
+
+    public static String[] openpnp_openpnp_110833060 = {
+            "/home/cuong/IdeaProjects/apr-repo/regression-bugs",
+            "/home/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/openpnp-openpnp-110833060.txt",
+            "SampleJobTest#testSampleJob",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] openpnp_openpnp_213669200 = {
+            "/home/cuong/IdeaProjects/apr-repo/regression-bugs",
+            "/home/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/openpnp-openpnp-213669200.txt",
+            "SampleJobTest#testSampleJob",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
 }

@@ -43,7 +43,8 @@ public class Main {
 //		args = Bugs.sannies_mp4parser_79111320;
 //		args = Bugs.stagemonitor_stagemonitor_145477129;
 //		args = Bugs.puniverse_capsule_78565048;
-		args = Bugs.openpnp_openpnp_130246850;
+//		args = Bugs.openpnp_openpnp_130246850;
+		args = Bugs.openpnp_openpnp_110833060;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];
