@@ -82,7 +82,7 @@ public class TBarFixer extends AbstractFixer {
 			if (scns == null || scns.isEmpty()) continue;
 
 			if (!tried) {
-				checkCompiling(scns.get(0).targetJavaFile.getAbsolutePath());
+				checkCompiling(scns.get(0).targetJavaFile.getAbsolutePath(), scns.get(0).targetClassFile);
 				tried = true;
 			}
 

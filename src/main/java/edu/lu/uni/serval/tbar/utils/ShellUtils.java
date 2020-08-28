@@ -19,7 +19,11 @@ import edu.lu.uni.serval.tbar.config.Configuration;
 
 public class ShellUtils {
 
-	public static String shellRun(List<String> asList, String buggyProject) throws IOException {
+    public static String shellRun(List<String> asList, String buggyProject) throws IOException {
+        return shellRun(asList, buggyProject, null);
+    }
+
+	public static String shellRun(List<String> asList, String buggyProject, String execDir) throws IOException {
 		String fileName;
         String cmd;
         if (System.getProperty("os.name").toLowerCase().startsWith("win")){
@@ -54,10 +58,8 @@ public class ShellUtils {
         batFile.deleteOnExit();
         System.err.println("==> Run command: " + String.join(" ", asList));
         Process process= Runtime.getRuntime().exec(cmd);
+
         String results = ShellUtils.getShellOut(process);
-        if (process.exitValue() == 0) {
-            results += "\n==TBAR_OK==";
-        }
         batFile.delete();
         return results;
 	}
