@@ -103,6 +103,23 @@ public abstract class AbstractFixer implements IFixer {
 
 		log.info(projectName + " Failed Tests: " + this.minErrorTest);
 	}
+
+	protected void checkCompiling(String sourceFilePath) {
+		try {
+			String result = ShellUtils.shellRun(Arrays.asList("javac -Xlint:unchecked -source 1.8 -target 1.8 -cp "
+					+ PathUtils.buildCompileClassPath(Arrays.asList(PathUtils.getJunitPath()), dp.classPath, dp.testClassPath, dp.libPaths)
+					+ " -d " + dp.classPath + " " + sourceFilePath), buggyProject);
+			if (!result.trim().isEmpty()) {
+				System.out.println(result);
+				System.err.println("Please make sure project is compilable first!");
+				System.exit(1);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.debug(buggyProject + " ---Fixer: fix fail because of javac exception! ");
+			System.exit(1);
+		}
+	}
 	
 	public AbstractFixer(String path, String projectName, int bugId, String defects4jPath) {
 		this.path = path;
