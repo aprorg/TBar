@@ -170,4 +170,25 @@ public class Bugs {
             "/target/classes/",
             "/target/test-classes/",
     };
+
+    public static String[] sannies_mp4parser_79111320 = {
+            "/home/cuong/IdeaProjects/apr-repo/regression-bugs/streaming",
+            "/home/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/sannies-mp4parser-79111320.txt",
+            "com.mp4parser.streaming.rawformats.aac.AdtsAacStreamingTrackTest#testMuxing,com.mp4parser.streaming.rawformats.h264.H264AnnexBTrackTest#testMuxing",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] stagemonitor_stagemonitor_145477129 = {
+            "/home/cuong/IdeaProjects/apr-repo/regression-bugs/stagemonitor-core",
+            "/home/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/stagemonitor-stagemonitor-145477129.txt",
+            "org.stagemonitor.core.metrics.metrics2.ElasticsearchReporterTest#testReportTimers,org.stagemonitor.core.metrics.metrics2.ElasticsearchReporterTest#testReportHistograms",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/build/classes/main",
+            "/build/classes/test",
+            "org.stagemonitor.core.elasticsearch.IndexSelectorIntegrationTest#testDeleteOldIndicesUnavailable",
+    };
 }

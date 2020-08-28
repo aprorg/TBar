@@ -19,26 +19,29 @@ public class Main {
 
 	public static void main(String[] args) {
 		// traccar
-		args = Bugs.tananaev_traccar_82839755;
-		args = Bugs.Bears_127;
-		args = Bugs.Bears_102;
-		args = Bugs.tananaev_traccar_64783123;
-		args = Bugs.Bears_98;
-		args = Bugs.tananaev_traccar_68883949;
-		args = Bugs.Bears_121;
-		args = Bugs.Bears_139;
-		args = Bugs.tananaev_traccar_221926468;
-		args = Bugs.Bears_116;
-		args = Bugs.Bears_110;
+//		args = Bugs.tananaev_traccar_82839755;
+//		args = Bugs.Bears_127;
+//		args = Bugs.Bears_102;
+//		args = Bugs.tananaev_traccar_64783123;
+//		args = Bugs.Bears_98;
+//		args = Bugs.tananaev_traccar_68883949;
+//		args = Bugs.Bears_121;
+//		args = Bugs.Bears_139;
+//		args = Bugs.tananaev_traccar_221926468;
+//		args = Bugs.Bears_116;
+//		args = Bugs.Bears_110;
 
-		args = Bugs.apache_commons_lang_224267191;
+//		args = Bugs.apache_commons_lang_224267191;
 
 		// spoon
-		args = Bugs.Bears_217;
-		args = Bugs.Bears_78;
-		args = Bugs.Bears_42;
-		args = Bugs.Bears_56;
-		args = Bugs.Bears_74;
+//		args = Bugs.Bears_217;
+//		args = Bugs.Bears_78;
+//		args = Bugs.Bears_42;
+//		args = Bugs.Bears_56;
+//		args = Bugs.Bears_74;
+
+//		args = Bugs.sannies_mp4parser_79111320;
+		args = Bugs.stagemonitor_stagemonitor_145477129;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];
@@ -49,16 +52,28 @@ public class Main {
 		Configuration.classPath = args[5];
 		Configuration.testClassPath = args[6];
 
+		String ignoredTestsStr = args.length > 7 ? args[7] : "";
+
 		Configuration.outputPath += "NormalFL/";
+		List<String> ignoredTests = new ArrayList<>();
 		List<String> failedTests = new ArrayList<>();
+
+		if (!ignoredTestsStr.isEmpty()) {
+			for (String ignoredTest : ignoredTestsStr.split(",")) {
+				if (!ignoredTests.contains(ignoredTest)) {
+					ignoredTests.add(ignoredTest);
+				}
+			}
+		}
+
 		for (String failedTest : failedTestsStr.split(",")) {
-			if (!failedTests.contains(failedTest)) {
+			if (!failedTests.contains(failedTest) && !ignoredTests.contains(failedTest)) {
 				failedTests.add(failedTest);
 			}
 		}
 
 		String bugId = new File(suspiciousFile).getName().replace(".txt", "");
-		AbstractFixer fixer = new TBarFixer(projectFolder, failedTests, bugId);
+		AbstractFixer fixer = new TBarFixer(projectFolder, failedTests, ignoredTests, bugId);
 		fixer.dataType = "TBar";
 		fixer.metric = Configuration.faultLocalizationMetric;
 		fixer.suspCodePosFile = new File(suspiciousFile);

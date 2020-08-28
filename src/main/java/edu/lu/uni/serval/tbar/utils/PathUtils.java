@@ -102,6 +102,7 @@ public class PathUtils {
 		path.append(JunitRunner.class.getProtectionDomain().getCodeSource().getLocation().getFile());
 		path.append(System.getProperty("path.separator"));
 		path.append(StringUtils.join(additionalPath, System.getProperty("path.separator")));
+		path.append(System.getProperty("path.separator"));
 		for (String libPath : libPaths) {
 			path.append(libPath);
 			path.append(System.getProperty("path.separator"));

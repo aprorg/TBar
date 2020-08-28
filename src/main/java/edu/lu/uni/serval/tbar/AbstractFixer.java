@@ -56,7 +56,8 @@ public abstract class AbstractFixer implements IFixer {
 	protected List<String> failedTestCasesStrList = new ArrayList<>();
 	// The failed test cases after running defects4j command in Java code but not in terminal.
 	private List<String> fakeFailedTestCasesList = new ArrayList<>();
-	
+	private List<String> fakeIgnoredTestCasesList = new ArrayList<>();
+
 	// 0: failed to fix the bug, 1: succeeded to fix the bug. 2: partially succeeded to fix the bug.
 	public int fixedStatus = 0;
 	public String dataType = "";
@@ -66,7 +67,7 @@ public abstract class AbstractFixer implements IFixer {
 	
 	public boolean isTestFixPatterns = false;
 
-	public AbstractFixer(String projectPath, List<String> failedTests, String bugId) {
+	public AbstractFixer(String projectPath, List<String> failedTests, List<String> ignoredTests, String bugId) {
 		// set path to project
 		fullBuggyProjectPath = projectPath;
 		buggyProject = bugId;
@@ -74,6 +75,7 @@ public abstract class AbstractFixer implements IFixer {
 		// set failed test method names
 		// org.apache.commons.lang3.reflect.MethodUtilsTest#testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess
 		fakeFailedTestCasesList.addAll(failedTests);
+		fakeIgnoredTestCasesList.addAll(ignoredTests);
 
 		// set failed test class names
 		// org.apache.commons.lang3.reflect.MethodUtilsTest
@@ -339,6 +341,7 @@ public abstract class AbstractFixer implements IFixer {
 				failedTestsAfterFix.addAll(tempFailedTestCases);
 				errorTestAfterFix = failedTestsAfterFix.size();
 				failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
+				failedTestsAfterFix.removeAll(this.fakeIgnoredTestCasesList);
 				if (failedTestsAfterFix.size() > 0) continue;
 
 			} catch (IOException e) {
