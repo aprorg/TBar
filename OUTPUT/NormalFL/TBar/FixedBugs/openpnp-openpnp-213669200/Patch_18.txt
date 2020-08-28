@@ -1,0 +1,15 @@
+diff --git a/src/main/java/org/openpnp/util/OpenCvUtils.java b/src/main/java/org/openpnp/util/OpenCvUtils.java
+index 2ff0346ed46..6c0f39337b8 100644
+--- a/src/main/java/org/openpnp/util/OpenCvUtils.java
++++ b/src/main/java/org/openpnp/util/OpenCvUtils.java
+@@ -239,6 +239,9 @@ public class OpenCvUtils {
+     }
+ 
+     public static void saveDebugImage(Class implementationClass, String function, String identifier, Mat mat) {
+-        saveDebugImage(implementationClass, function, identifier, OpenCvUtils.toBufferedImage(mat));
++        if (mat != null) {
++	saveDebugImage(implementationClass, function, identifier, OpenCvUtils.toBufferedImage(mat));
++	}
++
+     }
+ }
