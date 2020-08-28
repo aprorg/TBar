@@ -202,4 +202,14 @@ public class Bugs {
             "/build/classes/java/test",
             "CapsuleTest#testJDKClassPath,CapsuleTest#testMerge,CapsuleTest#testPrintHelp,CapsuleTest#testTrampoline",
     };
+
+    public static String[] openpnp_openpnp_130246850 = {
+            "/home/cuong/IdeaProjects/apr-repo/regression-bugs",
+            "/home/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/openpnp-openpnp-130246850.txt",
+            "SampleJobTest#testSampleJob",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
 }
