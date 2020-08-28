@@ -47,6 +47,11 @@ public class ShellUtils {
         FileOutputStream outputStream = null;
         try {
             outputStream = new FileOutputStream(batFile);
+            if (execDir != null) {
+                outputStream.write("cd ".getBytes());
+                outputStream.write((execDir + ";").getBytes());
+            }
+
             for (String arg: asList){
                 outputStream.write(arg.getBytes());
             }

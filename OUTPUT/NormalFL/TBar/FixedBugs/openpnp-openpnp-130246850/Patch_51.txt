@@ -1,0 +1,15 @@
+diff --git a/src/main/java/org/openpnp/machine/reference/feeder/ReferenceStripFeeder.java b/src/main/java/org/openpnp/machine/reference/feeder/ReferenceStripFeeder.java
+index 479a4d4053e..8a274fb1a87 100644
+--- a/src/main/java/org/openpnp/machine/reference/feeder/ReferenceStripFeeder.java
++++ b/src/main/java/org/openpnp/machine/reference/feeder/ReferenceStripFeeder.java
+@@ -247,7 +247,10 @@ public class ReferenceStripFeeder extends ReferenceFeeder {
+         if (holeLocations.isEmpty()) {
+             return null;
+         }
+-        MainFrame.cameraPanel.getCameraView(camera).showFilteredImage(image, 500);
++        if (MainFrame.cameraPanel != null) {
++	MainFrame.cameraPanel.getCameraView(camera).showFilteredImage(image, 500);
++	}
++
+         return holeLocations.get(0);
+     }
