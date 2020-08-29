@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/github/underscore/lodash/Xml.java b/src/main/java/com/github/underscore/lodash/Xml.java
+index f7ae8849209..caa2289ced7 100644
+--- a/src/main/java/com/github/underscore/lodash/Xml.java
++++ b/src/main/java/com/github/underscore/lodash/Xml.java
+@@ -696,7 +696,7 @@ public final class Xml {
+             if (localMap != null && localMap.size() == 1
+                 && ((Map.Entry) localMap.entrySet().iterator().next()).getValue() instanceof List
+                 && !((List) ((Map.Entry) localMap.entrySet().iterator().next()).getValue()).isEmpty()) {
+-                name = String.valueOf(((Map.Entry) localMap.entrySet().iterator().next()).getKey());
++                name = String.valueOf(((Map.Entry) map.entrySet().iterator().next()).getKey());
+             } else {
+                 name = "root";
+             }

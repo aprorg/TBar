@@ -77,9 +77,19 @@ public class DataPreparer {
 		if (new File(projectDir + buggyProject + "/target/dependency/").exists()) {
 			libPackages.addAll(FileHelper.getAllFiles(projectDir + buggyProject + "/target/dependency/", ".jar"));
 		}
+
+		for (String extraLibPath : Configuration.extraClasspath.split(File.pathSeparator)) {
+			if (new File(extraLibPath).exists()) {
+				List<File> newLibs = FileHelper.getAllFiles(extraLibPath, ".jar");
+				libPackages.addAll(newLibs);
+				libPaths.add(extraLibPath);
+			}
+		}
+
 		for (File libPackage : libPackages) {
 			libPaths.add(libPackage.getAbsolutePath());
 		}
+
 		System.out.println("Dependency List: " + libPaths);
 	}
 	

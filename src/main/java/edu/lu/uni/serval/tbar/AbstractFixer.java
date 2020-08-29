@@ -355,9 +355,20 @@ public abstract class AbstractFixer implements IFixer {
 				}
 				List<String> tempFailedTestCases = readTestResults(results);
 				failedTestsAfterFix.addAll(tempFailedTestCases);
-				errorTestAfterFix = failedTestsAfterFix.size();
 				failedTestsAfterFix.removeAll(this.fakeFailedTestCasesList);
+
 				failedTestsAfterFix.removeAll(this.fakeIgnoredTestCasesList);
+				List<String> ignoredTests = new ArrayList<>();
+				for (String fMethod : failedTestsAfterFix) {
+					for (String fFake: fakeIgnoredTestCasesList) {
+						if (fMethod.contains(fFake)) {
+							ignoredTests.add(fMethod);
+						}
+					}
+				}
+				failedTestsAfterFix.removeAll(ignoredTests);
+				errorTestAfterFix = failedTestsAfterFix.size();
+
 				if (failedTestsAfterFix.size() > 0) continue;
 
 			} catch (IOException e) {
@@ -436,15 +447,17 @@ public abstract class AbstractFixer implements IFixer {
 			if (NumberUtils.isDigits(testResult.substring(0, 1))) {
 				int index = testResult.indexOf(") ");
 				if (index <= 0) continue;
-				testResult = testResult.substring(index + 1, testResult.length() - 1).trim();
 				int indexOfLeftParenthesis = testResult.indexOf("(");
 				if (indexOfLeftParenthesis < 0) {
-					System.err.println(testResult);
-					continue;
+					testResult = testResult.substring(index + 1).trim();
+					failedTeatCases.add(testResult);
 				}
-				String testCase = testResult.substring(0, indexOfLeftParenthesis);
-				String testClass = testResult.substring(indexOfLeftParenthesis + 1);
-				failedTeatCases.add(testClass + "#" + testCase);
+				else {
+					testResult = testResult.substring(index + 1, testResult.length() - 1).trim();
+					String testCase = testResult.substring(0, indexOfLeftParenthesis);
+					String testClass = testResult.substring(indexOfLeftParenthesis + 1);
+					failedTeatCases.add(testClass + "#" + testCase);
+				}
 			}
 		}
 		return failedTeatCases;

@@ -15,4 +15,5 @@ public class Configuration {
 	public static String testClassPath = "";
 	public static String srcPath = "";
 	public static String testSrcPath = "";
+	public static String extraClasspath = "";
 }

@@ -302,4 +302,109 @@ public class Bugs {
             "/target/classes/",
             "/target/test-classes/",
     };
+
+    public static String[] Bears_176 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/zipkin2",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-176.txt",
+            "zipkin2.SpanTest#canUsePrimitiveOverloads",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] Bears_188 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-188.txt",
+            "hu.oe.nik.szfmv.visualization.DashboardTest#allRequiredValuesReceivedOnUpdate",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] Bears_220 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-220.txt",
+            "com.github.underscore.lodash.StringTest#toXmlFromJson21,com.github.underscore.lodash.StringTest#toXmlFromJson20",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] Bears_251 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-251.txt",
+            "com.webfirmframework.wffweb.tag.html.AbstractHtmlTest#testToOutputStream2,com.webfirmframework.wffweb.tag.html.AbstractHtmlTest#testToString2",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] petergeneric_stdlib_292030904 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/guice/hibernate",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/petergeneric-stdlib-292030904.txt",
+            "com.peterphi.std.guice.hibernate.webquery.embeddedpktest.DynamicQueryEmbeddedPkTest",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] raphw_byte_buddy_107351165 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/byte-buddy-dep",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/raphw-byte-buddy-107351165.txt",
+            "net.bytebuddy.dynamic.scaffold.inline.RedefinitionDynamicTypeBuilderTest#testPreparedMethod,net.bytebuddy.description.type.GenericSignatureResolutionTest#testTypeVariableWildcardLowerInterfaceBound,net.bytebuddy.dynamic.scaffold.inline.RebaseDynamicTypeBuilderTest#testConstructorRetentionNoAuxiliaryType,net.bytebuddy.dynamic.scaffold.inline.RebaseDynamicTypeBuilderTest#testGenericType",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+            "net.bytebuddy.pool.TypePoolLazyFacadeTypeDescriptionTest,net.bytebuddy.description.type.TypeDescriptionArrayProjectionTest,net.bytebuddy.description.type.TypeDescriptionForLoadedTypeTest,net.bytebuddy.pool.TypePoolDefaultTypeDescriptionTest,net.bytebuddy.description.type.TypeDescriptionGenericBuilderTest",
+    };
+
+    public static String[] raphw_byte_buddy_171322757 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/byte-buddy-dep",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/raphw-byte-buddy-171322757.txt",
+            "net.bytebuddy.implementation.MethodDelegationOriginTest#testOriginExecutableOnMethodWithCache,net.bytebuddy.implementation.FixedValueTest#testObjectProperties,net.bytebuddy.dynamic.loading.ClassInjectorUsingReflectionTest#testInjectionOrderNoPrematureAuxiliaryInjection,net.bytebuddy.implementation.MethodDelegationOriginTest#testOriginExecutableConstructorWithCache,net.bytebuddy.implementation.MethodDelegationOriginTest#testOriginConstructorWithCache,net.bytebuddy.implementation.InvocationHandlerAdapterTest#testStaticAdapterWithMethodCache,net.bytebuddy.implementation.MethodDelegationOriginTest#testOriginMethodWithCache,net.bytebuddy.implementation.InvocationHandlerAdapterTest#testInstanceAdapterWithMethodCache",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] Bears_203 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/common",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-203.txt",
+            "slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTemperature,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteGarmin3TemperatureThenSpeed,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteGarmin3Temperature,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTrackpoint2HeadingAndBearing,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteUnknownHeading,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteSpeed,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTrackpoint2SpeedAndBearing,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTrackpoint2Speed,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTrackpoint2Heading,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTrackpoint2Temperature,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteUnknownTemperature,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteHeading,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTrackpoint1Temperature,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteTrackpoint1TemperatureThenSpeed,slash.navigation.gpx.Gpx11ExtensionsTest#testWriteUnknownSpeed",
+            "/src/main/java/",
+            "/../navigation-formats/src/test/java/",
+            "/target/classes/",
+            "/../navigation-formats/target/test-classes/",
+            "",
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/navigation-formats/target/dependency:/Users/cuong/IdeaProjects/jrelifix/BugsDataset/navigation-formats/target/classes",
+    };
+
+    public static String[] languagetool_org_languagetool_393031702 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/languagetool-core",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/languagetool-org-languagetool-393031702.txt",
+            "org.languagetool.rules.spelling.hunspell.HunspellRuleTest#testRuleWithFrench,org.languagetool.rules.spelling.hunspell.HunspellRuleTest#testImmunizedFrenchWord",
+            "/src/main/java/",
+            "/../languagetool-language-modules/fr/src/test/java/",
+            "/target/classes/",
+            "/../languagetool-language-modules/fr/target/test-classes/",
+            "",
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/languagetool-language-modules/fr/target/dependency:/Users/cuong/IdeaProjects/jrelifix/BugsDataset/languagetool-language-modules/fr/target/classes",
+    };
+
+    public static String[] mybatis_mybatis_3_117115623 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/mybatis-mybatis-3-117115623.txt",
+            "org.apache.ibatis.submitted.inheritance.InheritanceTest,org.apache.ibatis.submitted.language.LanguageTest",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
 }

@@ -51,10 +51,23 @@ public class Main {
 //		args = Bugs.Bears_3;
 //		args = Bugs.Bears_4;
 //		args = Bugs.Bears_5;
-		args = Bugs.Bears_13;
+//		args = Bugs.Bears_13;
 //		args = Bugs.Bears_21;
 //		args = Bugs.Bears_23;
 //		args = Bugs.Bears_25;
+
+//		args = Bugs.Bears_176;
+//		args = Bugs.Bears_188;
+//		args = Bugs.Bears_220;
+//		args = Bugs.Bears_251;
+
+//		args = Bugs.petergeneric_stdlib_292030904;
+//		args = Bugs.raphw_byte_buddy_107351165;
+//		args = Bugs.raphw_byte_buddy_171322757;
+
+//		args = Bugs.Bears_203;
+//		args = Bugs.languagetool_org_languagetool_393031702;
+		args = Bugs.mybatis_mybatis_3_117115623;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];
@@ -66,6 +79,7 @@ public class Main {
 		Configuration.testClassPath = args[6];
 
 		String ignoredTestsStr = args.length > 7 ? args[7] : "";
+		Configuration.extraClasspath = args.length > 8 ? args[8] : "";
 
 		Configuration.outputPath += "NormalFL/";
 		List<String> ignoredTests = new ArrayList<>();
