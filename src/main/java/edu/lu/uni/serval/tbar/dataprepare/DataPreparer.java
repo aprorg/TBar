@@ -68,6 +68,9 @@ public class DataPreparer {
 		if (new File(projectDir + buggyProject + "/build/lib/").exists()) {
 			libPackages.addAll(FileHelper.getAllFiles(projectDir + buggyProject + "/build/lib/", ".jar"));
 		}
+		if (new File(projectDir + buggyProject + "/build/libs/").exists()) {
+			libPackages.addAll(FileHelper.getAllFiles(projectDir + buggyProject + "/build/libs/", ".jar"));
+		}
 		if (new File(projectDir + buggyProject + "/build/libs/lib").exists()) {
 			libPackages.addAll(FileHelper.getAllFiles(projectDir + buggyProject + "/build/libs/lib", ".jar"));
 		}

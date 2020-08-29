@@ -397,11 +397,54 @@ public class Bugs {
             "",
             "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/languagetool-language-modules/fr/target/dependency:/Users/cuong/IdeaProjects/jrelifix/BugsDataset/languagetool-language-modules/fr/target/classes",
     };
+    public static String[] owlcs_owlapi_93793148 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/tools",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/owlcs-owlapi-93793148.txt",
+            "uk.ac.manchester.owl.owlapi.tutorialowled2011.TutorialSnippetsTestCase#testModularization",
+            "/src/main/java/",
+            "/../contract/src/test/java/",
+            "/target/classes/",
+            "/../contract/target/test-classes/",
+            "",
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/contract/target/dependency:/Users/cuong/IdeaProjects/jrelifix/BugsDataset/contract/target/classes",
+    };
 
     public static String[] mybatis_mybatis_3_117115623 = {
             "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
             "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/mybatis-mybatis-3-117115623.txt",
             "org.apache.ibatis.submitted.inheritance.InheritanceTest,org.apache.ibatis.submitted.language.LanguageTest",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] yamcs_yamcs_186324159 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/yamcs-core",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/yamcs-yamcs-186324159.txt",
+            "org.yamcs.xtce.SpreadsheetLoaderTest#testContainerAliases,org.yamcs.xtce.SpreadsheetLoaderTest#testCommandVerifiers",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+            "org.yamcs.ArchiveIntegrationTest#testIndex"
+    };
+
+    public static String[] uwescience_myria_122377299 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/uwescience-myria-122377299.txt",
+            "edu.washington.escience.myria.operator.TipsyFileScanTest#testRelativeFileUrl",
+            "/src/",
+            "/test/",
+            "/build/main/",
+            "/build/test/",
+    };
+
+
+    public static String[] Bears_186 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/modules/swagger-codegen",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-186.txt",
+            "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegenTest#verify_that_interfaceOnly_is_removed_from_additional_properties_if_false",
             "/src/main/java/",
             "/src/test/java/",
             "/target/classes/",

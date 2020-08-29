@@ -67,7 +67,11 @@ public class Main {
 
 //		args = Bugs.Bears_203;
 //		args = Bugs.languagetool_org_languagetool_393031702;
-		args = Bugs.mybatis_mybatis_3_117115623;
+//		args = Bugs.mybatis_mybatis_3_117115623;
+//		args = Bugs.owlcs_owlapi_93793148;
+//		args = Bugs.yamcs_yamcs_186324159;
+//		args = Bugs.uwescience_myria_122377299;
+		args = Bugs.Bears_186;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];

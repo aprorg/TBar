@@ -454,6 +454,7 @@ public abstract class AbstractFixer implements IFixer {
 				}
 				else {
 					testResult = testResult.substring(index + 1, testResult.length() - 1).trim();
+					indexOfLeftParenthesis = testResult.indexOf("(");
 					String testCase = testResult.substring(0, indexOfLeftParenthesis);
 					String testClass = testResult.substring(indexOfLeftParenthesis + 1);
 					failedTeatCases.add(testClass + "#" + testCase);
