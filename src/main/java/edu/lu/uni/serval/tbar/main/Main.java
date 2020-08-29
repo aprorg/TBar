@@ -45,7 +45,16 @@ public class Main {
 //		args = Bugs.puniverse_capsule_78565048;
 //		args = Bugs.openpnp_openpnp_130246850;
 //		args = Bugs.openpnp_openpnp_110833060;
-		args = Bugs.openpnp_openpnp_213669200;
+//		args = Bugs.openpnp_openpnp_213669200;
+
+		// jackson-databind
+//		args = Bugs.Bears_3;
+//		args = Bugs.Bears_4;
+//		args = Bugs.Bears_5;
+		args = Bugs.Bears_13;
+//		args = Bugs.Bears_21;
+//		args = Bugs.Bears_23;
+//		args = Bugs.Bears_25;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];
