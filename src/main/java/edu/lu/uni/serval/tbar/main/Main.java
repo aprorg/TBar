@@ -71,7 +71,12 @@ public class Main {
 //		args = Bugs.owlcs_owlapi_93793148;
 //		args = Bugs.yamcs_yamcs_186324159;
 //		args = Bugs.uwescience_myria_122377299;
-		args = Bugs.Bears_186;
+//		args = Bugs.Bears_186;
+//		args = Bugs.Bears_194;
+//		args = Bugs.Bears_193;
+//		args = Bugs.Bears_143;
+//		args = Bugs.apache_struts_147673952;
+		args = Bugs.Bears_144;
 
 		String projectFolder = args[0];
 		String suspiciousFile = args[1];

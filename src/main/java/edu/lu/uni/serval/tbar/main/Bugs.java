@@ -450,4 +450,58 @@ public class Bugs {
             "/target/classes/",
             "/target/test-classes/",
     };
+
+    public static String[] Bears_194 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-194.txt",
+            "com.gdssecurity.pmd.SanitizersTest#testSanitizerParseInt",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] Bears_193 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/activiti-cloud-app-service",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-193.txt",
+            "org.activiti.cloud.app.ApplicationTest#contextLoads",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] Bears_143 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-143.txt",
+            "edu.harvard.h2ms.controllers.PasswordControllerTests#test_register_passwordController_registerUserByEmail",
+            "/src/main/java/",
+            "/src/test/java/",
+            "/target/classes/",
+            "/target/test-classes/",
+    };
+
+    public static String[] apache_struts_147673952 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/core",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/apache-struts-147673952.txt",
+            "uk.ac.manchester.owl.owlapi.tutorialowled2011.TutorialSnippetsTestCase#testModularization",
+            "/src/main/java/",
+            "/../plugins/jfreechart/src/test/java/",
+            "/target/classes/",
+            "/../plugins/jfreechart/target/test-classes/",
+            "",
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/plugins/jfreechart/target/dependency:/Users/cuong/IdeaProjects/jrelifix/BugsDataset/plugins/jfreechart/target/classes",
+    };
+
+    public static String[] Bears_144 = {
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/core",
+            "/Users/cuong/IdeaProjects/jrelifix/SusFiles/PerfectFL/Bears-144.txt",
+            "dk.alexandra.fresco.suite.spdz.storage.TestParallelMascots#testFirstTriples,dk.alexandra.fresco.suite.spdz.storage.TestParallelMascots#testConstructor",
+            "/src/main/java/",
+            "/../suite/spdz/src/test/java/",
+            "/target/classes/",
+            "/../suite/spdz/target/test-classes/",
+            "",
+            "/Users/cuong/IdeaProjects/jrelifix/BugsDataset/suite/spdz/target/dependency:/Users/cuong/IdeaProjects/jrelifix/BugsDataset/suite/spdz/target/classes",
+    };
 }
